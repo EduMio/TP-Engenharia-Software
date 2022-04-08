@@ -12,7 +12,7 @@ Funcional:
 - As principais funções são: 
   - CRUD para cliente, vendedor, administrador e processos; 
   - disposição dos processos em formato de kanban; 
-  - listagem de processos através de filtros diversos (data); 
+  - listagem de processos através de filtros diversos (data de criação, vendedor responsável, nome do cliente, nome da empresa et cetera); 
   - criação de um modelo fixo de processo que pode ser editado pelo usuário; 
   - criação de tópicos extras e customização nos processos. 
 
