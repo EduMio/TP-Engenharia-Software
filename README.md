@@ -1,10 +1,10 @@
 # TP-Engenharia-Software
 Grupo: 
 
-- Eduardo Diniz Mio
-- Júlia Stancioli Paiva
-- Thaís Andrade Reis Soares
-- Lucas Augusto Leone 
+- Eduardo Diniz Mio - 2019006558
+- Júlia Stancioli Paiva 
+- Thaís Andrade Reis Soares - 2020007031
+- Lucas Augusto Leone - 2019006892
 
 Funcional:
 - Iremos criar um CRM (Sistema de cadastro de clientes)
