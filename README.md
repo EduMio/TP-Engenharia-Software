@@ -4,7 +4,7 @@ Grupo:
 - Eduardo Diniz Mio
 - Júlia Stancioli Paiva
 - Thaís Andrade Reis Soares
--
+- Lucas Augusto Leone 
 
 Funcional:
 - Iremos criar um CRM (Sistema de cadastro de clientes)
