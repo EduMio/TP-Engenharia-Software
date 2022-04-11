@@ -2,7 +2,7 @@
 Grupo: 
 
 - Eduardo Diniz Mio - 2019006558
-- Júlia Stancioli Paiva 
+- Júlia Stancioli Paiva - 2020006680
 - Thaís Andrade Reis Soares - 2020007031
 - Lucas Augusto Leone - 2019006892
 
