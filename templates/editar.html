@@ -66,7 +66,28 @@
             <a href="home.html" type="submit" class="btn btn-lg btn-outline-success">Salvar alterações</a>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <a href="home.html" type="submit" class="btn btn-lg btn-outline-danger">Excluir cliente</a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir">
+                Excluir cliente
+            </button>
+            
+        </div>
+
+        <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação de exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="text-align: left">
+                    <p class="card-text">Tem certeza de que deseja excluir esse cliente?</p>
+                </div>
+                <div class="modal-footer">
+                <a href="editar.html" class="btn btn-secondary">Cancelar</a>
+                <a href="editar.html" class="btn btn-danger">Excluir</a>
+                </div>
+            </div>
+            </div>
         </div>
     </form>
     
