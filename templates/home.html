@@ -45,7 +45,25 @@
                     <div class="card-body">
                         <h5 class="card-title">Nome do cliente</h5>
                         <p class="card-text">Esta empresa é do ramo de tecnologia contra HTML.</p>
-                        <a href="read.html" class="btn btn-primary">Mais detalhes</a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Mais detalhes
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Nome do cliente</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="text-align: left">
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Editar</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div> 
             </div>
