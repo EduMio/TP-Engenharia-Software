@@ -1,12 +1,9 @@
-import django
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
-        if not email:
-            raise ValueError('Users must have an email address')
 
         user = self.model(
             email=self.normalize_email(email),
@@ -35,6 +32,14 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+class Client():
+    name = models.CharField(max_length=200)
+    company_name = models.CharField(max_length=200) 
+    mail = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200)
+    status = models.CharField(max_length=50)
+    business_area = models.CharField(max_length=200,default="Lead")
+
 class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email address',
@@ -46,14 +51,12 @@ class User(AbstractBaseUser):
     staff = models.BooleanField(default=False) 
     admin = models.BooleanField(default=False)
 
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] 
     objects = UserManager()
 
-    def get_full_name(self):
-        return self.email
-
-    def get_short_name(self):
+    def get_email(self):
         return self.email
 
     def __str__(self):
@@ -72,3 +75,10 @@ class User(AbstractBaseUser):
     @property
     def is_admin(self):
         return self.admin
+
+
+class Card():
+    responsible = models.CharField(max_length=200) # Email do vendedor responsavel
+    description = models.CharField(max_length=2000)
+    create_date = models.DateTimeField('date created') # Data de criacao do card
+    client_mail = models.CharField(max_length=200)
