@@ -12,7 +12,7 @@ READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=True)
 #    environ.Env.read_env()
 
 DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY')
+#SECRET_KEY = env('SECRET_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 SECRET_KEY=1234
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'djcrm.urls'
+ROOT_URLCONF = 'crm.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djcrm.wsgi.application'
+WSGI_APPLICATION = 'crm.wsgi.application'
 
 
 # Database
