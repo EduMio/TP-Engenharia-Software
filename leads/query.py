@@ -12,18 +12,20 @@ def create_connection(db_file):
 
     return conn
 
-def select_all_tasks(conn):
+def select_all_lead(conn):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks")
+    cur.execute("SELECT * FROM lead")
 
-def select_nameclient_task(conn,cliente):
+def select_nameclient_lead(conn,cliente):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks WHERE nome_cliente =? ",(cliente,))
+    cur.execute("SELECT * FROM lead WHERE nome_cliente =? ",(cliente,))
     
-def select_user_task(conn,cliente):
+def select_user_lead(conn,cliente):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks WHERE nome_vendedor =? ",(cliente,))
+    cur.execute("SELECT * FROM lead WHERE nome_vendedor =? ",(cliente,))
 
-def select_namecompany_task(conn,cliente):
+def select_namecompany_lead(conn,cliente):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks WHERE name_company =?",(cliente,))
+    cur.execute("SELECT * FROM lead WHERE name_company =?",(cliente,))
+
+
