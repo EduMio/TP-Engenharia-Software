@@ -5,15 +5,15 @@
 {% endblock css %}
 
 {% block content %}
-{% for lead in leads %}
+
 
     <div class="container">
         <div class="row align-items-start">
-            {% if lead.status == 1 %}
             <div class="col" id="col-1">
                 <div class="row">
                     <h5> Lead </h5>
-                </div>  
+                </div> 
+                {% if lead.status == 1 %} 
                 <div class="card">
                     <div class="card-header">
                         {{ lead. }}
@@ -50,13 +50,13 @@
                         </div>
                     </div>
                 </div> 
+                {% endif %}
             </div>
-            {% endif %}
-            {% if lead.status == 2 %}
             <div class="col" id="col-2">
                 <div class="row">
                     <h5> Primeiro contato </h5>
                 </div>
+                {% if lead.status == 2 %}
                 <div class="card">
                     <div class="card-header">
                         {{ lead. }}
@@ -93,13 +93,14 @@
                         </div>
                     </div>
                 </div> 
+                {% endif %} 
             </div>
-            {% endif %} 
-            {% if lead.status == 3 %}
+            
             <div class="col" id="col-3">
                 <div class="row">
                     <h5> Diagnóstico </h5>
                 </div>
+                {% if lead.status == 3 %}
                 <div class="card">
                     <div class="card-header">
                         {{ lead. }}
@@ -135,14 +136,15 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+                {% endif %} 
             </div>
-            {% endif %}
-            {% if lead.status == 4 %}
+            
             <div class="col" id="col-4">
                 <div class="row">
                     <h5> Proposta </h5>
                 </div>  
+                {% if lead.status == 4 %}
                 <div class="card">
                     <div class="card-header">
                         {{ lead. }}
@@ -179,13 +181,14 @@
                         </div>
                     </div>
                 </div> 
+                {% endif %}
             </div>
-            {% endif %}
-            {% if lead.status == 5 %}
+            
             <div class="col" id="col-5">
                 <div class="row">
                     <h5> Negociação </h5>
                 </div> 
+                {% if lead.status == 5 %}
                 <div class="card">
                     <div class="card-header">
                         {{ lead. }}
@@ -221,14 +224,15 @@
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div>
+                {% endif %}  
             </div>
-            {% endif %}
-            {% if lead.status == 6 %}
+            
             <div class="col" id="col-6">
                 <div class="row">
                     <h5> Contrato </h5>
                 </div> 
+                {% if lead.status == 6 %}
                 <div class="card">
                     <div class="card-header">
                         {{ lead. }}
@@ -264,11 +268,11 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+                {% endif %} 
             </div>
-            {% endif %}
+            
         </div>
     </div>
 
-{% endfor %}
 {% endblock content %}
