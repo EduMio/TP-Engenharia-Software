@@ -8,20 +8,14 @@ env = environ.Env(
 
 
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=True)
-#if READ_DOT_ENV_FILE:
-#    environ.Env.read_env()
 
 DEBUG = env('DEBUG')
-#SECRET_KEY = env('SECRET_KEY')
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 SECRET_KEY=1234
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = ['*']
 
-# Application definition
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
@@ -32,13 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third party apps
     'crispy_forms',
     "crispy_tailwind",
     'tailwind',
     'theme',
 
-    # Local apps
     'leads',
     'agents',
 ]
