@@ -29,7 +29,7 @@ class SignupView(generic.CreateView):
 
 
 class LandingPageView(generic.TemplateView):
-    template_name = "landing.html"
+    template_name = "home.html"
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -70,7 +70,7 @@ class DashboardView(OrganisorAndLoginRequiredMixin, generic.TemplateView):
 
 
 def landing_page(request):
-    return render(request, "landing.html")
+    return render(request, "home.html")
 
 
 class LeadListView(LoginRequiredMixin, generic.ListView):

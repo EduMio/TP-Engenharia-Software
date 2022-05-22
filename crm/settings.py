@@ -7,9 +7,6 @@ env = environ.Env(
 )
 
 
-READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=True)
-
-DEBUG = env('DEBUG')
 SECRET_KEY=1234
 
 BASE_DIR = Path(__file__).resolve().parent.parent
