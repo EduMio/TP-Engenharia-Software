@@ -137,7 +137,7 @@ def lead_detail(request, pk):
 
 
 class LeadCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
-    template_name = "leads/lead_create.html"
+    template_name = "leads/cadastrar.html"
     form_class = LeadModelForm
 
     def get_success_url(self):
@@ -161,7 +161,7 @@ def lead_create(request):
     context = {
         "form": form
     }
-    return render(request, "leads/lead_create.html", context)
+    return render(request, "leads/cadastrar.html", context)
 
 
 class LeadUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
