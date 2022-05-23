@@ -35,38 +35,6 @@ class LandingPageView(generic.TemplateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class DashboardView(OrganisorAndLoginRequiredMixin, generic.TemplateView):
-    template_name = "dashboard.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(DashboardView, self).get_context_data(**kwargs)
-
-        user = self.request.user
-
-        total_lead_count = Lead.objects.filter(organisation=user.userprofile).count()
-
-        thirty_days_ago = datetime.date.today() - datetime.timedelta(days=30)
-
-        total_in_past30 = Lead.objects.filter(
-            organisation=user.userprofile,
-            date_added__gte=thirty_days_ago
-        ).count()
-
-        converted_category = Category.objects.get(name="Converted")
-        converted_in_past30 = Lead.objects.filter(
-            organisation=user.userprofile,
-            category=converted_category,
-            converted_date__gte=thirty_days_ago
-        ).count()
-
-        context.update({
-            "total_lead_count": total_lead_count,
-            "total_in_past30": total_in_past30,
-            "converted_in_past30": converted_in_past30
-        })
-        return context
-
-
 def landing_page(request):
     return render(request, "landing.html")
 
