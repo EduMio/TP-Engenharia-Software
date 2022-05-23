@@ -113,7 +113,7 @@ class LeadCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
         lead = form.save(commit=False)
         lead.organisation = self.request.user.userprofile
         lead.save()
-        messages.success(self.request, "You have successfully created a lead")
+        messages.success(self.request, "Você criou um lead com sucesso")
         return super(LeadCreateView, self).form_valid(form)
 
 
