@@ -21,9 +21,6 @@
                     <a href="{% url 'leads:lead-detail' lead.pk %}" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
                         Visão Geral
                     </a>
-                    <a href="{% url 'leads:lead-category-update' lead.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
-                        Categoria
-                    </a>
                     <a href="{% url 'leads:lead-update' lead.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
                         Atualizar detalhes
                     </a>    
@@ -50,7 +47,7 @@
             <div class="mt-5 shadow px-4 sm:px-6">
                 <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
                     <dt class="text-sm font-medium text-gray-500">
-                    Notes (<a href="{% url 'leads:lead-followup-update' followup.pk %}" class="text-blue-500 hover:text-blue-700">atualizar</a>)
+                    Notas (<a href="{% url 'leads:lead-followup-update' followup.pk %}" class="text-blue-500 hover:text-blue-700">atualizar</a>)
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     {{ followup.notes }}
