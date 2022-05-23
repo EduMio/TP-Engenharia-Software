@@ -130,38 +130,6 @@ def lead_create(request):
     return render(request, "leads/lead_create.html", context)
 
 
-class LeadUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
-    template_name = "leads/lead_update.html"
-    form_class = LeadModelForm
-
-    def get_queryset(self):
-        user = self.request.user
-        return Lead.objects.filter(organisation=user.userprofile)
-
-    def get_success_url(self):
-        return reverse("leads:lead-list")
-
-    def form_valid(self, form):
-        form.save()
-        messages.info(self.request, "You have successfully updated this lead")
-        return super(LeadUpdateView, self).form_valid(form)
-
-
-def lead_update(request, pk):
-    lead = Lead.objects.get(id=pk)
-    form = LeadModelForm(instance=lead)
-    if request.method == "POST":
-        form = LeadModelForm(request.POST, instance=lead)
-        if form.is_valid():
-            form.save()
-            return redirect("/leads")
-    context = {
-        "form": form,
-        "lead": lead
-    }
-    return render(request, "leads/lead_update.html", context)
-
-
 class LeadDeleteView(OrganisorAndLoginRequiredMixin, generic.DeleteView):
     template_name = "leads/lead_delete.html"
 
