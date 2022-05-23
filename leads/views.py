@@ -1,14 +1,12 @@
 import logging
-from django.utils import timezone
-from django import contrib
+import datetime
 from django.contrib import messages
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
 from django.views import generic
 from agents.mixins import OrganisorAndLoginRequiredMixin
-from .models import Lead, Agent, Category, FollowUp
+from .models import Lead, Category, FollowUp
 from .forms import (
     LeadModelForm, 
     CustomUserCreationForm, 
@@ -29,11 +27,11 @@ class SignupView(generic.CreateView):
 
 
 class LandingPageView(generic.TemplateView):
-    template_name = "home.html"
+    template_name = "landing.html"
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect("dashboard")
+            return redirect("login")
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -47,7 +45,7 @@ class DashboardView(OrganisorAndLoginRequiredMixin, generic.TemplateView):
 
         total_lead_count = Lead.objects.filter(organisation=user.userprofile).count()
 
-        thirty_days_ago = timezone.now() - timezone.timedelta(days=30)
+        thirty_days_ago = datetime.date.today() - datetime.timedelta(days=30)
 
         total_in_past30 = Lead.objects.filter(
             organisation=user.userprofile,
@@ -70,7 +68,7 @@ class DashboardView(OrganisorAndLoginRequiredMixin, generic.TemplateView):
 
 
 def landing_page(request):
-    return render(request, "home.html")
+    return render(request, "landing.html")
 
 
 class LeadListView(LoginRequiredMixin, generic.ListView):
@@ -137,7 +135,7 @@ def lead_detail(request, pk):
 
 
 class LeadCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
-    template_name = "leads/cadastrar.html"
+    template_name = "leads/lead_create.html"
     form_class = LeadModelForm
 
     def get_success_url(self):
@@ -161,7 +159,7 @@ def lead_create(request):
     context = {
         "form": form
     }
-    return render(request, "leads/cadastrar.html", context)
+    return render(request, "leads/lead_create.html", context)
 
 
 class LeadUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
@@ -212,6 +210,7 @@ def lead_delete(request, pk):
     lead.delete()
     return redirect("/leads")
 
+
 class AssignAgentView(OrganisorAndLoginRequiredMixin, generic.FormView):
     template_name = "leads/assign_agent.html"
     form_class = AssignAgentForm
@@ -232,6 +231,7 @@ class AssignAgentView(OrganisorAndLoginRequiredMixin, generic.FormView):
         lead.agent = agent
         lead.save()
         return super(AssignAgentView, self).form_valid(form)
+
 
 class CategoryListView(LoginRequiredMixin, generic.ListView):
     template_name = "leads/category_list.html"
@@ -257,7 +257,6 @@ class CategoryListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         user = self.request.user
-        # initial queryset of leads for the entire organisation
         if user.is_organisor:
             queryset = Category.objects.filter(
                 organisation=user.userprofile
@@ -268,13 +267,13 @@ class CategoryListView(LoginRequiredMixin, generic.ListView):
             )
         return queryset
 
+
 class CategoryDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "leads/category_detail.html"
     context_object_name = "category"
 
     def get_queryset(self):
         user = self.request.user
-        # initial queryset of leads for the entire organisation
         if user.is_organisor:
             queryset = Category.objects.filter(
                 organisation=user.userprofile
@@ -361,7 +360,7 @@ class LeadCategoryUpdateView(LoginRequiredMixin, generic.UpdateView):
         converted_category = Category.objects.get(name="Converted")
         if form.cleaned_data["category"] == converted_category:
             if lead_before_update.category != converted_category:
-                instance.converted_date = timezone.now()
+                instance.converted_date = datetime.datetime.now()
         instance.save()
         return super(LeadCategoryUpdateView, self).form_valid(form)
 
